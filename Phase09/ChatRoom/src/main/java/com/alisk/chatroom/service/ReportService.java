@@ -7,9 +7,6 @@ import com.alisk.chatroom.model.report.UserReport;
 import java.util.Set;
 
 public interface ReportService {
-
-    void generateReport();
-
     Set<RoomReport> getRoomsReport();
 
     Set<UserReport> getUsersReport();

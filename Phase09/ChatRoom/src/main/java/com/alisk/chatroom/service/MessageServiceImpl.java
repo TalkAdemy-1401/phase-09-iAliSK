@@ -10,11 +10,10 @@ import com.alisk.chatroom.model.User;
 import com.alisk.chatroom.repository.MessageRepository;
 import com.alisk.chatroom.repository.RoomRepository;
 import com.alisk.chatroom.repository.UserRepository;
+import com.alisk.chatroom.util.Time;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Service
@@ -37,7 +36,7 @@ public class MessageServiceImpl implements MessageService {
                 .text(text)
                 .room(room)
                 .sender(sender)
-                .createdAt(LocalDateTime.now())
+                .createdAt(Time.now())
                 .build();
 
         return messageRepo.save(message);
@@ -47,7 +46,7 @@ public class MessageServiceImpl implements MessageService {
     public Message editMessage(Integer messageId, String text) {
         Message message = getMessage(messageId);
         message.setText(text);
-        message.setUpdatedAt(LocalDateTime.now());
+        message.setUpdatedAt(Time.now());
         return messageRepo.save(message);
     }
 
